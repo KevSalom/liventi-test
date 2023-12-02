@@ -7,11 +7,16 @@
     ],
     "routes": [
       {
+        "src": "/companies/(.*)",
+        "dest": "/companies/$1"
+      },
+      {
+        "src": "/company/(.*)",
+        "dest": "/company/$1"
+      },
+      {
         "src": "/(.*)",
-        "dest": "/",
-        "headers": {
-          "Access-Control-Allow-Origin": "*"
-        }
+        "dest": "/"
       }
     ]
   }
