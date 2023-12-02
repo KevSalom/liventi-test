@@ -23,25 +23,23 @@ const TABLE_NAME= process.env.TABLE_NAME
 //Get all record filtered by Email
 app.get("/companies/:email", async (req, res) => {
 
-  res.send('holis')
+  const REP_EMAIL = req.params.email;
+  const headers = {
+    Authorization: `Bearer ${APIKEY}`,
+  };
 
-  // const REP_EMAIL = req.params.email;
-  // const headers = {
-  //   Authorization: `Bearer ${APIKEY}`,
-  // };
-
-  // try {
-  //   const { data } = await axios.get(
-  //     `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}?filterByFormula={RepEmail}='${REP_EMAIL}'`,
-  //     { headers }
-  //   );
-  //    if(data.records.length === 0){
-  //      return res.status(404).json({ error: 'This email is not registered' });
-  //    }
-  //   return res.json(data);
-  // } catch (error) {
-  //   return res.status(500).json({ error: error.message });
-  // }
+  try {
+    const { data } = await axios.get(
+      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}?filterByFormula={RepEmail}='${REP_EMAIL}'`,
+      { headers }
+    );
+     if(data.records.length === 0){
+       return res.status(404).json({ error: 'This email is not registered' });
+     }
+    return res.json(data);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
 });
 
 
