@@ -1,15 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './index.css'
+import { Route, Routes } from 'react-router-dom'
+import Home from './Views/Home'
+import SelectCompany from './Views/SelectCompany'
+import Company from './Views/Company'
+import axios from 'axios'
+// axios.defaults.baseURL = 'https://countriesdeploy-production.up.railway.app/'
+axios.defaults.baseURL = 'http://localhost:3000'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-     <h1 className='text-3xl text-blue-900'>Hola mundo</h1>
-    </>
+    <div className='font-outfit overflow-x-hidden'>
+     <Routes>
+      <Route path='/' element={<Home/>} />
+      <Route path='/select' element={<SelectCompany/>} />
+      <Route path='/select/:name' element={<Company/>} />
+     </Routes>
+    </div>
   )
 }
 
