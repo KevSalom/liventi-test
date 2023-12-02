@@ -3,8 +3,8 @@ import Home from './Views/Home'
 import SelectCompany from './Views/SelectCompany'
 import Company from './Views/Company'
 import axios from 'axios'
-// axios.defaults.baseURL = 'https://countriesdeploy-production.up.railway.app/'
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'https://api-liventi-ox3e8xgj3-kevsalom.vercel.app'
+
 
 function App() {
 

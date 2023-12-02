@@ -15,12 +15,12 @@ const APIKEY = process.env.APIKEY;
 // AitTable Database ID
 const BASE_ID= process.env.BASE_ID
 
-// AirTable Databa Name
+// AirTable Database Name
 const TABLE_NAME= process.env.TABLE_NAME
 
 
 
-//Get all record by filtered by Email
+//Get all record filtered by Email
 app.get("/companies/:email", async (req, res) => {
 
   const REP_EMAIL = req.params.email;
@@ -33,11 +33,11 @@ app.get("/companies/:email", async (req, res) => {
       `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}?filterByFormula={RepEmail}='${REP_EMAIL}'`,
       { headers }
     );
+     if(data.records.length === 0){
+       return res.status(404).json({ error: 'This email is not registered' });
+     }
     return res.json(data);
   } catch (error) {
-    if (error.respose) {
-      return res.status(404).json({ error: error.message });
-    }
     return res.status(500).json({ error: error.message });
   }
 });
@@ -56,17 +56,15 @@ app.get("/company/:id", async (req, res) => {
       `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}/${RECORD_ID}`,
       { headers }
     );
-
     return res.json(data);
   } catch (error) {
-    console.error(error.message);
+    if(error.response.status === 404){
+      return res.status(404).json({ error: error.message });
+    } else{
+      return res.status(500).json({ error: error.message });
+    }
+    
   }
 });
-  
-  
-
-
-
-
 
 module.exports = app;
