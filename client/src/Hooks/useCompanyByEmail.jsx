@@ -11,6 +11,7 @@ const useCompanyByEmail = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(`/companies/${email}`);
+      console.log(data.records)
       updateEmail(email)
       updateCompanies(data.records)
       setLoading(null);
