@@ -9,7 +9,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
-
+// AitTable Database APIKEY
 const APIKEY = process.env.APIKEY;
 
 // AitTable Database ID
@@ -18,9 +18,7 @@ const BASE_ID= process.env.BASE_ID
 // AirTable Database Name
 const TABLE_NAME= process.env.TABLE_NAME
 
-
-
-//Get all record filtered by Email
+//Route to get all record filtered by Email
 app.get("/companies/:email", async (req, res) => {
 
   const REP_EMAIL = req.params.email;
@@ -44,7 +42,7 @@ app.get("/companies/:email", async (req, res) => {
 
 
 
-//Get a record by ID
+//Route to Get a record by ID
 app.get("/company/:id", async (req, res) => {
   const RECORD_ID = req.params.id;
   const headers = {
