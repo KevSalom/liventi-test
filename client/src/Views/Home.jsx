@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   return (
-    <div className=" h-screen w-screen bg-gray-800  pt-28 md:flex justify-center items-center  md:pt-0">
+    <div className=" h-screen w-screen bg-gray-800  pt-32 md:flex justify-center items-center  md:pt-0">
         <section className="text-center w-[90%]  mx-auto">
             <h2 className="text-gray-400 font-light text-2xl lg:text-3xl">Welcome, Seller!</h2>
             <h1 className="text-gray-200 text-5xl lg:text-6xl">Enter your email address:</h1>

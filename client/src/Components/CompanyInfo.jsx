@@ -14,7 +14,7 @@ const CompanyInfo = () => {
     },[])
     
   return (
-    <div className='w-[95%]  bg-gray-50 mt-10 mb-2 rounded-[10px] shadow-lg pt-1 min-h-[500px] '>
+    <div className='w-[95%]  bg-gray-50 mt-10 mb-2 rounded-[10px] shadow-lg pt-1 min-h-[500px] mx-auto '>
       {loading?<p className='mt-52'><Spinner/></p> :null}
      {company && <><h1 className='uppercase text-2xl font-semibold text-left ml-8 my-3 text-gray-800 -tracking-tight'>{company.company_name}</h1>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-3 p-3 mx-auto'>
